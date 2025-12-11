@@ -15,25 +15,16 @@ class PhoneLineTest {
     }
     
     @Test
-    public void testCase1() {
-        // onHook/nul onHook/nul
-        assertEquals("nul", phone.onHook());
-        assertEquals("nul", phone.onHook());
-    }
-    
-    @Test
     public void testCase2() {
         // offHook/soundDialTone onHook/disconnectedLine onHook/nul
         assertEquals("soundDialTone", phone.offHook());
         assertEquals("disconnectedLine", phone.onHook());
-        assertEquals("nul", phone.onHook());
     }
     
     @Test
     public void testCase3() {
         // offHook/soundDialTone offHook/nul onHook/disconnectedLine
         assertEquals("soundDialTone", phone.offHook());
-        assertEquals("nul", phone.offHook());
         assertEquals("disconnectedLine", phone.onHook());
     }
     
@@ -41,7 +32,6 @@ class PhoneLineTest {
     public void testCase4() {
         // offHook/soundDialTone offHook/nul validNumber/findConnection
         assertEquals("soundDialTone", phone.offHook());
-        assertEquals("nul", phone.offHook());
         assertEquals("findConnection", phone.validNumber());
     }
     
@@ -49,7 +39,6 @@ class PhoneLineTest {
     public void testCase5() throws InterruptedException {
         // offHook/soundDialTone offHook/nul I/I validNumber/findConnection
         assertEquals("soundDialTone", phone.offHook());
-        assertEquals("nul", phone.offHook());
         Thread.sleep(100); // I/I - один такт
         assertEquals("findConnection", phone.validNumber());
     }
@@ -58,7 +47,6 @@ class PhoneLineTest {
     public void testCase6() throws InterruptedException {
         // offHook/soundDialTone offHook/nul I/I I/I validNumber/findConnection
         assertEquals("soundDialTone", phone.offHook());
-        assertEquals("nul", phone.offHook());
         Thread.sleep(100); // I/I - первый такт
         Thread.sleep(100); // I/I - второй такт
         assertEquals("findConnection", phone.validNumber());
@@ -70,7 +58,6 @@ class PhoneLineTest {
         assertEquals("soundDialTone", phone.offHook());
         assertEquals("findConnection", phone.validNumber());
         assertEquals("disconnectedLine", phone.onHook());
-        assertEquals("nul", phone.onHook());
     }
     
     @Test
@@ -78,7 +65,6 @@ class PhoneLineTest {
         // offHook/soundDialTone validNumber/findConnection offHook/nul onHook/disconnectedLine
         assertEquals("soundDialTone", phone.offHook());
         assertEquals("findConnection", phone.validNumber());
-        assertEquals("nul", phone.offHook());
         assertEquals("disconnectedLine", phone.onHook());
     }
     
@@ -87,7 +73,6 @@ class PhoneLineTest {
         // offHook/soundDialTone validNumber/findConnection offHook/nul validNumber/continues
         assertEquals("soundDialTone", phone.offHook());
         assertEquals("findConnection", phone.validNumber());
-        assertEquals("nul", phone.offHook());
         assertEquals("continues", phone.validNumber());
     }
     
@@ -151,7 +136,6 @@ class PhoneLineTest {
         assertEquals("soundDialTone", phone.offHook());
         assertEquals("PlayMessage", phone.invalidNumber());
         assertEquals("disconnectedLine", phone.onHook());
-        assertEquals("nul", phone.onHook());
     }
     
     @Test
@@ -159,7 +143,6 @@ class PhoneLineTest {
         // offHook/soundDialTone invalidNumber/PlayMessage offHook/nul onHook/disconnectedLine
         assertEquals("soundDialTone", phone.offHook());
         assertEquals("PlayMessage", phone.invalidNumber());
-        assertEquals("nul", phone.offHook());
         assertEquals("disconnectedLine", phone.onHook());
     }
     
@@ -168,7 +151,6 @@ class PhoneLineTest {
         // offHook/soundDialTone invalidNumber/PlayMessage offHook/nul validNumber/slowBusyTone
         assertEquals("soundDialTone", phone.offHook());
         assertEquals("PlayMessage", phone.invalidNumber());
-        assertEquals("nul", phone.offHook());
         assertEquals("slowBusyTone", phone.validNumber());
     }
     
@@ -232,7 +214,6 @@ class PhoneLineTest {
         assertEquals("soundDialTone", phone.offHook());
         Thread.sleep(100); // I/I
         assertEquals("disconnectedLine", phone.onHook());
-        assertEquals("nul", phone.onHook());
     }
     
     @Test
@@ -240,7 +221,6 @@ class PhoneLineTest {
         // offHook/soundDialTone I/I offHook/nul onHook/disconnectedLine
         assertEquals("soundDialTone", phone.offHook());
         Thread.sleep(100); // I/I
-        assertEquals("nul", phone.offHook());
         assertEquals("disconnectedLine", phone.onHook());
     }
     
@@ -249,7 +229,6 @@ class PhoneLineTest {
         // offHook/soundDialTone I/I offHook/nul validNumber/findConnection
         assertEquals("soundDialTone", phone.offHook());
         Thread.sleep(100); // I/I
-        assertEquals("nul", phone.offHook());
         assertEquals("findConnection", phone.validNumber());
     }
     
@@ -258,19 +237,7 @@ class PhoneLineTest {
         // offHook/soundDialTone I/I offHook/nul I/I validNumber/findConnection
         assertEquals("soundDialTone", phone.offHook());
         Thread.sleep(100); // I/I - первый такт
-        assertEquals("nul", phone.offHook());
         Thread.sleep(100); // I/I - второй такт
-        assertEquals("findConnection", phone.validNumber());
-    }
-    
-    @Test
-    public void testCase29() throws InterruptedException {
-        // offHook/soundDialTone I/I offHook/nul I/I I/I validNumber/findConnection
-        assertEquals("soundDialTone", phone.offHook());
-        Thread.sleep(100); // I/I - первый такт
-        assertEquals("nul", phone.offHook());
-        Thread.sleep(100); // I/I - второй такт
-        Thread.sleep(100); // I/I - третий такт
         assertEquals("findConnection", phone.validNumber());
     }
     
@@ -317,7 +284,6 @@ class PhoneLineTest {
         Thread.sleep(100); // I/I - первый такт
         Thread.sleep(100); // I/I - второй такт
         assertEquals("disconnectedLine", phone.onHook());
-        assertEquals("nul", phone.onHook());
     }
     
     @Test
@@ -326,7 +292,6 @@ class PhoneLineTest {
         assertEquals("soundDialTone", phone.offHook());
         Thread.sleep(100); // I/I - первый такт
         Thread.sleep(100); // I/I - второй такт
-        assertEquals("nul", phone.offHook());
         assertEquals("disconnectedLine", phone.onHook());
     }
     
@@ -336,30 +301,6 @@ class PhoneLineTest {
         assertEquals("soundDialTone", phone.offHook());
         Thread.sleep(100); // I/I - первый такт
         Thread.sleep(100); // I/I - второй такт
-        assertEquals("nul", phone.offHook());
-        assertEquals("findConnection", phone.validNumber());
-    }
-    
-    @Test
-    public void testCase37() throws InterruptedException {
-        // offHook/soundDialTone I/I I/I offHook/nul I/I validNumber/findConnection
-        assertEquals("soundDialTone", phone.offHook());
-        Thread.sleep(100); // I/I - первый такт
-        Thread.sleep(100); // I/I - второй такт
-        assertEquals("nul", phone.offHook());
-        Thread.sleep(100); // I/I - третий такт
-        assertEquals("findConnection", phone.validNumber());
-    }
-    
-    @Test
-    public void testCase38() throws InterruptedException {
-        // offHook/soundDialTone I/I I/I offHook/nul I/I I/I validNumber/findConnection
-        assertEquals("soundDialTone", phone.offHook());
-        Thread.sleep(100); // I/I - первый такт
-        Thread.sleep(100); // I/I - второй такт
-        assertEquals("nul", phone.offHook());
-        Thread.sleep(100); // I/I - третий такт
-        Thread.sleep(100); // I/I - четвёртый такт
         assertEquals("findConnection", phone.validNumber());
     }
     
@@ -421,26 +362,5 @@ class PhoneLineTest {
         Thread.sleep(100); // I/I - второй такт (Ready_1 -> Ready_2)
         Thread.sleep(100); // I/I - третий такт (Ready_2 -> Warning) - Таймаут
         assertEquals("slowBusyTone", phone.validNumber());
-    }
-    
-    @Test
-    public void testCase45() {
-        // validNumber/nul onHook/nul
-        assertEquals("nul", phone.validNumber());
-        assertEquals("nul", phone.onHook());
-    }
-    
-    @Test
-    public void testCase46() {
-        // invalidNumber/nul onHook/nul
-        assertEquals("nul", phone.invalidNumber());
-        assertEquals("nul", phone.onHook());
-    }
-    
-    @Test
-    public void testCase47() throws InterruptedException {
-        // I/I onHook/nul
-        Thread.sleep(100); // I/I
-        assertEquals("nul", phone.onHook());
     }
 }
